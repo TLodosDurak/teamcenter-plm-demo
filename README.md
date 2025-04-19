@@ -8,8 +8,6 @@
 A demonstration of a lightweight PLM (Product Lifecycle Management) system inspired by Teamcenter, showcasing part lifecycle management and 3D model visualization capabilities.
 
 ![Demo Screenshot](assets/Demo.PNG)
-![Demo Video](assets/TC-demo.mp4)
-
 
 ## Overview
 
@@ -22,32 +20,31 @@ This project demonstrates a simplified version of enterprise PLM functionality, 
 - **Risk Level Assessment**: Built-in risk evaluation system for parts
 - **Real-time Updates**: Instant status updates and notifications
 - **Responsive Design**: Modern UI that works across devices
+- **ITK Simulation**: C++ implementation simulating Teamcenter's ITK (Integration Toolkit) behaviors
 
-## TeamCenter Integration Experience
+## Data Source: Teamcenter X Essentials Trial VM
 
-The design of this demo is informed by hands-on experience with Siemens TeamCenter PLM system. Here's how we leveraged TeamCenter's concepts:
+The part data and workflow concepts in this demo were extracted from hands-on experience with Teamcenter X Essentials Trial VM. Below are screenshots showing the source environment:
 
-### Data Export Process
+### Teamcenter Dashboard Access
 ![TeamCenter Dashboard](assets/Dashboard.PNG)
+The Teamcenter X dashboard provides access to part metadata, lifecycle states, and relationships that we've modeled in this demo. This enterprise environment helped us understand the proper structure for part management workflows.
 
-The part data structure and lifecycle states are modeled after TeamCenter's approach to PLM. We used the TeamCenter interface to understand and replicate the essential workflows for part management.
-
-### CAD Integration
+### NX CAD Data Export
 ![NX Integration](assets/NX.PNG)
+Using Teamcenter X's NX integration, we exported sample CAD data and studied the relationships between parts, assemblies, and their lifecycle states. This informed our 3D visualization implementation.
 
-The 3D visualization feature demonstrates the integration capabilities similar to TeamCenter's NX CAD integration, showing how engineering data can be made accessible through a web interface.
-
-### Secure Access
+### Teamcenter Authentication
 ![TeamCenter Login](assets/Login.PNG)
-
-While this is a demo, the architecture considers enterprise-grade security patterns used in TeamCenter, including proper authentication and authorization flows.
+Access to Teamcenter X Trial VM is secured through enterprise-grade authentication, ensuring data integrity. While our demo is simplified, it maintains similar principles of controlled access to part data.
 
 ## Technical Stack
 
 - **Frontend**: HTML5, JavaScript, Three.js for 3D visualization
 - **Backend**: Node.js, Express
-- **Data Storage**: JSON-based data store
+- **Data Storage**: JSON-based data store (structured based on Teamcenter data models)
 - **3D Support**: glTF format for 3D models
+- **ITK Simulation**: C++ implementation mimicking Teamcenter's server-side logic
 
 ## Getting Started
 
@@ -69,6 +66,13 @@ While this is a demo, the architecture considers enterprise-grade security patte
 
 4. Open `frontend/index.html` in your browser
 
+5. (Optional) Run the ITK simulation:
+   ```bash
+   cd cpp-itk-sim
+   g++ simulate_itk.cpp -o simulate_itk
+   ./simulate_itk
+   ```
+
 ## Development
 
 The project is structured to demonstrate PLM concepts while maintaining simplicity:
@@ -76,6 +80,45 @@ The project is structured to demonstrate PLM concepts while maintaining simplici
 - `frontend/`: Contains the web interface and 3D viewer
 - `backend/`: Houses the Node.js server and API endpoints
 - `assets/`: Stores demo files and documentation assets
+- `cpp-itk-sim/`: Simulates Teamcenter ITK functionality
+  - Demonstrates part status transitions
+  - Implements basic validation rules
+  - Simulates server-side business logic
+
+## Project Structure
+```
+teamcenter-plm-demo/
+├── frontend/          # Web interface and 3D viewer
+├── backend/           # Node.js server and API
+├── cpp-itk-sim/       # Teamcenter ITK simulation
+│   └── simulate_itk.cpp   # Core ITK simulation logic
+├── assets/           
+│   ├── Dashboard.PNG  # Teamcenter X Trial screenshots
+│   ├── NX.PNG        # CAD integration reference
+│   ├── Login.PNG     # Access control example
+│   └── Demo.PNG      # Demo application
+└── README.md
+```
+
+## ITK Simulation Details
+
+The `cpp-itk-sim` component simulates key aspects of Teamcenter's Integration Toolkit (ITK):
+
+### Features
+- Part lifecycle state management
+- Business rule validation
+- Risk level assessment logic
+- Status transition workflows
+
+### Example Usage
+```cpp
+Part torqueArm("000310", "Torque Arm Extended", "Medium");
+torqueArm.printStatus();  // Shows initial Draft status
+torqueArm.review();      // Transitions to In Review
+torqueArm.approve();     // Validates and transitions to Released
+```
+
+This simulation helps demonstrate how Teamcenter's server-side logic handles part lifecycle management and validation rules.
 
 ## Contributing
 
@@ -87,6 +130,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Inspired by Siemens TeamCenter PLM system
+- Data and concepts sourced from Siemens Teamcenter X Essentials Trial VM
 - 3D viewer powered by Three.js
 - Sample 3D models from Khronos glTF samples
+- ITK simulation inspired by Teamcenter Integration Toolkit
