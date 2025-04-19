@@ -1,0 +1,20 @@
+[
+  {
+    "id": "000310",
+    "name": "Torque Arm Extended",
+    "revision": "A",
+    "status": "Released",
+    "riskLevel": "Medium",
+    "owner": "John",
+    "linkedCAD": "43804500.par"
+  },
+  {
+    "id": "4000-0026",
+    "name": "Gearmotor Main Assembly",
+    "revision": "A",
+    "status": "In Review",
+    "riskLevel": "High",
+    "owner": "ed",
+    "linkedCAD": "ASM-P19B01-01+A0-12FN20-210.stp"
+  }
+]
