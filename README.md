@@ -7,7 +7,9 @@
 
 A demonstration of a lightweight PLM (Product Lifecycle Management) system inspired by Teamcenter, showcasing part lifecycle management and 3D model visualization capabilities.
 
+![Demo Screenshot](assets/Demo.PNG)
 ![Demo Video](assets/TC-demo.mp4)
+
 
 ## Overview
 
